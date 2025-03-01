@@ -1,17 +1,26 @@
 import { create } from 'zustand';
 import { Anime } from '@/types/Anime';
 import { getAnimeList } from '@/services/jikanAPI';
+import { OrderBy } from '@/types/OrderBy';
+
+type Order = [OrderBy, boolean];
 
 interface AnimeStore {
   animeList: Anime[];
+  query: string;
   error: string;
   isLoading: boolean;
+  orderBy: Order;
   fetchAnimeList: () => void;
+  setQuery: (query: string) => void;
+  setOrder: (value: Order) => void;
 }
 
 export const useAnimeList = create<AnimeStore>((set) => ({
   animeList: [],
   error: '',
+  query: '',
+  orderBy: [OrderBy.Rating, false],
   isLoading: false,
   fetchAnimeList: async () => {
     set({ isLoading: true, error: '' });
@@ -24,4 +33,6 @@ export const useAnimeList = create<AnimeStore>((set) => ({
       set({ isLoading: false });
     }
   },
+  setQuery: (query: string) => set({ query }),
+  setOrder: (value) => set({ orderBy: value }),
 }));
