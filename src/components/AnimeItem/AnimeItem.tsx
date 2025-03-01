@@ -17,7 +17,7 @@ export const AnimeItem = ({ anime }: Props) => {
       </div>
       <div className="description">
         <h4>{anime.title}</h4>
-        <p>{anime.synopsis.slice(0, 40)}...</p>
+        <p>{anime.synopsis ? anime.synopsis.slice(0, 40) : ''}...</p>
         <Link href="/">More</Link>
       </div>
     </div>

@@ -1,3 +1,7 @@
 export enum OrderBy {
-  Rating,
+  Title = 'title',
+  StartDate = 'start_date',
+  EndDate = 'end_date',
+  Episodes = 'episodes',
+  Score = 'score',
 }

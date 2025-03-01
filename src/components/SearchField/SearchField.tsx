@@ -1,19 +1,34 @@
 'use client' // eslint-disable-line prettier/prettier
-import { useAnimeList } from '@/store/store';
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export const SearchField = () => {
-  const setQuery = useAnimeList((state) => state.setQuery);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState('');
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setQuery(inputRef.current ? inputRef.current.value : '');
+    const newQuery = query.trim();
+    const currentParams = new URLSearchParams(window.location.search);
+
+    if (newQuery) {
+      currentParams.set('q', newQuery);
+    } else {
+      currentParams.delete('q'); // Видаляємо параметр, якщо поле порожнє
+    }
+
+    router.push(`?${currentParams.toString()}`);
   };
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
-      <input type="text " placeholder="search" className="search-field" ref={inputRef}></input>
+      <input
+        type="text "
+        placeholder="search"
+        className="search-field"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      ></input>
       <button className="search-button" type="submit">
         🔎
       </button>
