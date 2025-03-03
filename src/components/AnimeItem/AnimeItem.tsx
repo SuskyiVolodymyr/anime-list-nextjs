@@ -11,8 +11,14 @@ export const AnimeItem = ({ anime }: Props) => {
   return (
     <div className="anime">
       <div className="anime-image-container">
-        <Link href={`/${anime.mal_id}`}>
-          <Image src={anime.images.jpg.image_url} alt="cover" width={190} height={280} />
+        <Link href={`/${anime.mal_id}`} prefetch={false}>
+          <Image
+            src={anime.images.jpg.image_url}
+            alt="cover"
+            width={190}
+            height={280}
+            priority={false}
+          />
         </Link>
         <p className="anime-score">
           ⭐{anime.score}({anime.scored_by})
@@ -21,7 +27,9 @@ export const AnimeItem = ({ anime }: Props) => {
       <div className="description">
         <h4>{title.length > 49 ? title.slice(0, 50) + '...' : title}</h4>
         <p>{anime.synopsis ? anime.synopsis.slice(0, 40) : ''}...</p>
-        <Link href={`/${anime.mal_id}`}>More</Link>
+        <Link href={`/${anime.mal_id}`} prefetch={false}>
+          More
+        </Link>
       </div>
     </div>
   );
