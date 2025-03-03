@@ -3,11 +3,14 @@ import { SearchField } from '@/components/SearchField/SearchField';
 import { Filter } from '@/components/Filter/Filter';
 import { getAnimeList } from '@/services/jikanAPI';
 import { AnimeListPage } from '@/types/AnimePage';
-import { headers } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 
-export default async function Home() {
+type HomeProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function Home({ searchParams }: HomeProps) {
   let error = '';
   let animePage: AnimeListPage = {
     pagination: {
@@ -23,10 +26,9 @@ export default async function Home() {
     data: [],
   };
 
-  const headerList = await headers();
-  const referer = headerList.get('referer') || '';
-  const searchParams = new URLSearchParams(referer.split('?')[1] || '');
-  const queryString = searchParams.toString();
+  const searchParamsAwaited = await searchParams;
+
+  const queryString = new URLSearchParams(searchParamsAwaited as Record<string, string>).toString();
 
   try {
     animePage = await getAnimeList(queryString);
