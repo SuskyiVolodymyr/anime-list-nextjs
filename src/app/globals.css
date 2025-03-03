@@ -29,14 +29,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.Loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
-
 .container {
   padding: 10px;
   display: flex;
@@ -48,19 +40,28 @@ a:hover {
 .filter {
   padding: 10px;
   flex: 1;
-  height: 500px;
+  height: 400px;
   background-color: #626587;
   border-radius: 10px;
+  position: sticky;
+  top: 10px;
+}
+
+.filter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .filter-label {
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   font-weight: bold;
   margin-right: 10px;
 }
 
-#sort-by {
+.filter-select {
   width: 200px;
   height: 30px;
   border-radius: 20px;
@@ -69,8 +70,17 @@ a:hover {
   outline: none;
 }
 
+.filter-input {
+  width: 70px;
+  height: 20px;
+  border-radius: 20px;
+  padding: 3px;
+  font-size: 14px;
+  outline: none;
+}
+
 .filter-button {
-  margin-top: 10px;
+  margin-top: 10px ;
   height: 30px;
   width: 50%;
   border: #1c1d27 solid 1px;
@@ -145,4 +155,54 @@ a:hover {
   border-color: #4e506a;
   border-style: solid;
   border-left-style: none;
+}
+
+/* anime page */
+
+.anime-page {
+  padding: 20px;
+}
+
+.anime-image-and-info {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.anime-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.anime-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #979ad1;
+}
+
+.synopsis {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.anime-page p {
+  max-width: 1000px;
+  color: #8386b6;
+}
+
+.anime-types {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.anime-type {
+  margin-top: 10px;
+}
+
+.anime-images {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+  justify-content: center;
 }

@@ -1,6 +1,7 @@
 'use client' // eslint-disable-line prettier/prettier
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { manageQueryParams } from '@/services/manageQueryParams';
 
 export const SearchField = () => {
   const [query, setQuery] = useState('');
@@ -9,15 +10,9 @@ export const SearchField = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const newQuery = query.trim();
-    const currentParams = new URLSearchParams(window.location.search);
+    const currentParams = manageQueryParams([{ key: 'q', value: newQuery }]);
 
-    if (newQuery) {
-      currentParams.set('q', newQuery);
-    } else {
-      currentParams.delete('q'); // Видаляємо параметр, якщо поле порожнє
-    }
-
-    router.push(`?${currentParams.toString()}`);
+    router.push('?' + currentParams);
   };
 
   return (
