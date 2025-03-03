@@ -18,6 +18,7 @@ export const SearchField = () => {
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <input
+        id="search-field"
         type="text "
         placeholder="search"
         className="search-field"

@@ -17,7 +17,12 @@ export const AnimeStatusFilter = ({ setAnimeStatus, animeStatus }: Props) => {
       <label htmlFor="anime-status" className="filter-label">
         Status:
       </label>
-      <select id="anime-type" onChange={handleStatus} className="filter-select" value={animeStatus}>
+      <select
+        id="anime-status"
+        onChange={handleStatus}
+        className="filter-select"
+        value={animeStatus}
+      >
         {Object.entries(AnimeStatus).map(([key, value]) => (
           <option key={key} value={value}>
             {key}
