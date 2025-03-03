@@ -28,11 +28,11 @@ export const OrderSelect = ({ setIsASC, setOrderBy, order, isAsc }: Props) => {
         </select>
       </div>
       <div className="filter-item">
-        <label htmlFor="sort-by" className="filter-label">
+        <label htmlFor="order-by" className="filter-label">
           Order by:
         </label>
         <select
-          id="sort-by"
+          id="order-by"
           onChange={(e) => setIsASC(e.target.value === '⬆')}
           className="filter-select"
           value={isAsc ? '⬆' : '⬇'}

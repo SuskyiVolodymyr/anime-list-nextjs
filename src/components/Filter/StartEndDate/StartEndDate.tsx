@@ -23,13 +23,13 @@ export const StartEndDate = ({ setAfterYear, setBeforeYear, beforeYear, afterYea
         />
       </div>
       <div className="filter-item">
-        <label htmlFor="start-date" className="filter-label">
+        <label htmlFor="end-date" className="filter-label">
           Before year
         </label>
         <input
           className="filter-input"
           type="number"
-          id="start-date"
+          id="end-date"
           min={afterYear ? afterYear : 1950}
           max={new Date().getFullYear()}
           value={beforeYear}
