@@ -28,10 +28,10 @@ export const AnimeList = ({ initialPage, searchParams, initialError }: Props) =>
   const { inView, ref } = useInView();
 
   useEffect(() => {
-    if (inView && hasNextPage) {
+    if (inView && hasNextPage && !isFetchingNextPage) {
       fetchNextPage().catch((error) => console.error('Error fetching next page:', error));
     }
-  }, [fetchNextPage, inView, hasNextPage]);
+  }, [fetchNextPage, inView, hasNextPage, isFetchingNextPage]);
 
   const animeList = data?.pages.flatMap((page) => page.data) || [];
   const uniqueAnimeList = animeList.filter(
